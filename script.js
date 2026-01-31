@@ -171,7 +171,8 @@ function addBlock(x, y) {
 }
 
 function addTrap(x, y) {
-    const trap = Bodies.circle(x, y, 30, {
+    // Increased radius from 30 to 45 for easier collision (user feedback)
+    const trap = Bodies.circle(x, y, 45, {
         isStatic: true,
         isSensor: true,
         label: 'trap',
@@ -224,7 +225,7 @@ function handleOrientation(event) {
 
     // Beta: Front-Back (-180 to 180)
     // Gamma: Left-Right (-90 to 90)
-    const gravityScale = 0.002; // Reduced sensitivity for kids
+    const gravityScale = 0.005; // Increased sensitivity
 
     // Limit gravity max values
     let x = event.gamma * gravityScale; // x axis
