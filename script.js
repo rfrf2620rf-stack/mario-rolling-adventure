@@ -135,33 +135,39 @@ function setupLevelObstacles(level) {
     // Simple logic for demonstration
     // In real implementation, we might want coord based maps
 
-    // Level 1: Just walls (already there), maybe 1-2 pegs
+    // Level 1: Just walls (already there), maybe 1-2 blocks
     if (level === 1) {
-        addPeg(width / 2, height / 2);
+        addBlock(width / 2, height / 2);
     }
-    // Level 2: More pegs, maybe a trap
+    // Level 2: More blocks, maybe a trap
     else if (level === 2) {
-        addPeg(width / 3, height / 2);
-        addPeg(width * 2 / 3, height / 2);
+        addBlock(width / 3, height / 2);
+        addBlock(width * 2 / 3, height / 2);
         addTrap(width / 2, height / 2);
     }
     // Level 3: Harder
     else if (level >= 3) {
         for (let i = 0; i < 5; i++) {
-            addPeg(Math.random() * (width - 100) + 50, Math.random() * (height - 100) + 50);
+            addBlock(Math.random() * (width - 100) + 50, Math.random() * (height - 100) + 50);
         }
         addTrap(width / 2, height / 3);
         addTrap(width / 2, height * 2 / 3);
     }
 }
 
-function addPeg(x, y) {
-    const peg = Bodies.circle(x, y, 10, {
+function addBlock(x, y) {
+    const block = Bodies.rectangle(x, y, 40, 40, {
         isStatic: true,
-        render: { fillStyle: '#FFD700' } // Gold
+        render: {
+            sprite: {
+                texture: 'assets/block_brick.png',
+                xScale: 0.1, // Adjust scale as needed
+                yScale: 0.1
+            }
+        }
     });
-    Composite.add(engine.world, peg);
-    obstacles.push(peg);
+    Composite.add(engine.world, block);
+    obstacles.push(block);
 }
 
 function addTrap(x, y) {
