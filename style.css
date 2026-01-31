@@ -1,0 +1,129 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #5c94fc;
+    /* Fallback */
+    font-family: 'Hiragino Kaku Gothic ProN', 'Kodchasan', sans-serif;
+    touch-action: none;
+}
+
+/* Background Image */
+body {
+    background-image: url('assets/bg_start.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#start-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    /* Transparent white to show BG */
+    backdrop-filter: blur(5px);
+    /* Bloom effect */
+    z-index: 100;
+    text-align: center;
+}
+
+/* Replaced Text Header with Logo Image */
+h1 {
+    display: none;
+    /* Hide text, use logo instead */
+}
+
+#title-logo {
+    width: 80%;
+    max-width: 500px;
+    margin-bottom: 2rem;
+    animation: bounce 2s infinite ease-in-out;
+}
+
+p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px #000;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+/* Image based button */
+#start-btn {
+    background: url('assets/btn_start.png') no-repeat center center;
+    background-size: contain;
+    width: 250px;
+    height: 250px;
+    border: none;
+    box-shadow: none;
+    text-indent: -9999px;
+    /* Hide text */
+    cursor: pointer;
+    transition: transform 0.2s;
+    background-color: transparent;
+    /* Remove red */
+}
+
+#start-btn:active {
+    transform: scale(0.9);
+    box-shadow: none;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+#game-ui {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Let clicks pass through to canvas if needed */
+}
+
+#level-display {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 2rem;
+    color: white;
+    text-shadow: 2px 2px 0 #000;
+    font-weight: bold;
+}
+
+#restart-btn {
+    pointer-events: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
