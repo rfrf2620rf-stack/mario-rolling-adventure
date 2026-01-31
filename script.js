@@ -104,7 +104,7 @@ function loadLevel(level) {
         friction: 0.05,
         render: {
             sprite: {
-                texture: 'assets/chara_mario.png',
+                texture: 'assets/ball_mario.png',
                 xScale: 0.1, // Adjust scale as needed
                 yScale: 0.1
             }
